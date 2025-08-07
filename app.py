@@ -10,32 +10,31 @@ home_page = st.Page(
 
 
 register_page = st.Page(
-    page = "register.py",
+    page = "views/register.py",
     title = "Register")
 
+account_page = st.Page(
+    page = "views/account.py",
+    title = "My Account")
+
+login_page = st.Page(
+    page = "views/login.py",
+    title = "Login")
+
 about_page = st.Page(
-    page = "about.py",
-    title = "Learn More"
-)
+    page = "views/about.py",
+    title = "Learn More")
+
 
 settings_page = st.Page(
-    page = "settings.py",
+    page = "views/settings.py",
     title = "Settings"
 )
 
 #---Navigation Pages---
-pg = st.navigation(pages = [home_page, register_page, about_page, settings_page])
+pg = st.navigation(pages = [home_page, register_page, login_page, about_page, settings_page])
 
 #---Run Navigation---
 pg.run()
-
-
-#Running Setup
-print()
-print("You can now view your Streamlit app in your browser.")
-print()
-print(f"Local Url: http://localhost:8501/")
-print(f"Network Url: http://192.168.1.134:8501/")
-print()
 
 #streamlit run app.py
