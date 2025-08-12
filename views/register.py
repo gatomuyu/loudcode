@@ -2,7 +2,6 @@ import streamlit as st
 from PIL import Image
 import smtplib
 
-
 st.title("(Register) Welcome To Python Job Application")
 
 image1 = Image.open("images/Python_Image.jpg")
@@ -72,7 +71,7 @@ if payment == "Other...":
 can_yes = True
 
 def submit():
-        global can_yes
+        global can_yes, account_password
         taken_users = []
         taken_gmails = []
 
@@ -85,6 +84,11 @@ def submit():
         with open("views/gmails", "r") as f:
             for line in f:
                 taken_gmails.append(line.rstrip("\n"))
+
+        with open("views/passwords", "r") as f:
+            for line in f:
+                taken_gmails.append(line.rstrip("\n"))
+
 
         try:
             decoded_user = taken_users.index(username)
@@ -116,10 +120,10 @@ def submit():
                             if confirm_pass == account_password:
                                 sender = "brightchineseedu@gmail.com"
                                 receiver = gmail
-                                password = "w q u m c s b l a r x h u b h z"
+                                password = "x z a x q b m s n m j c z n b o"
                                 subject = "Python email test"
                                 body = f"""Hello!, If You Are Reading This, This is Working Successfully!
-                                                You Will Start At {date}, And Your Purpose Is {purpose}, You Will Be Paid With {payment}, Good luck :)"""
+                                           You Will Start At {date}, And Your Purpose Is {purpose}, You Will Be Paid With {payment}, Good luck :)"""
 
                                 # Header
                                 message = f"""From: Loud Code
@@ -138,14 +142,18 @@ def submit():
                                 with open("views/gmails", "a") as g:
                                     g.write(gmail + "\n")
 
+                                with open("views/passwords", "a") as g:
+                                    g.write(account_password + "\n")
+
                                 st.balloons()
                                 taken.append(username)
+
                             else:
                                 st.write("Confirmed Password Incorrect")
 
 
             except smtplib.SMTPRecipientsRefused:
-                st.write("Could Not Decode Users or Did Not Put Right App Password")
+                st.write("No Such Gmail Exists")
 
         else:
             try:
