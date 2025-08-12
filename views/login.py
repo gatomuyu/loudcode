@@ -43,7 +43,7 @@ def login():
 
             st.write("**Successfully Logged In!**")
 
-            user_image = Image.open("images/User_Image.jpg")
+            user_image = Image.open("images/User_image.jpg")
             new_img = user_image.resize((100, 100))
 
             st.sidebar.image(new_img)
