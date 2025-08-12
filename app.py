@@ -1,8 +1,15 @@
 import streamlit as st
+from views.login import username
+from PIL import Image
+
+def s():
+    user_image = Image.open("images/User_Image.jpg")
+    new_img = user_image.resize((100, 100))
+
+    st.sidebar.text(username if not None else "'Not Registered'")
+    st.sidebar.image(new_img)
 
 #---Page Setup---
-st.sidebar.text("Please Select A Tab")
-
 home_page = st.Page(
     page = "home.py",
     title = "Home Page",
